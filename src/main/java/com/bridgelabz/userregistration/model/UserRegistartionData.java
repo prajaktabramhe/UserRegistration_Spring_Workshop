@@ -1,8 +1,9 @@
 package com.bridgelabz.userregistration.model;
 
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+
+import java.time.LocalTime;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,17 +29,16 @@ public @Data class UserRegistartionData {
 	private String lastName;
 	private int age;
 	private Long mobileNumber;
-	private String registrationTime;
+	private LocalTime registrationTime;
 	
 	public UserRegistartionData ()
 	{}
 
 	public UserRegistartionData(UserRegistraionDTO userregistraionDTO) 
 	{
-		DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");  
-    	LocalDateTime now = LocalDateTime.now();  
-		this.registrationTime = dateTimeFormat.format(now);
 		this.updateUserData(userregistraionDTO);
+		this.registrationTime = LocalTime.now();
+		
 	}
 
 	public void updateUserData(UserRegistraionDTO userregistraionDTO)
